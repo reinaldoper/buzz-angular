@@ -1,0 +1,28 @@
+<app-carregando *ngIf="!buzz.length"></app-carregando>
+<section *ngIf="buzz.length" class="quizz__container">
+
+  <div class="quizz_logo">
+    <img src="assets/imgs/logo.png" alt="logo" srcset="">
+    <h3>{{buzz[next].type}}</h3>
+    <h3>Category: {{buzz[next].category}}</h3>
+  </div>
+
+  <div class="quizz_questions">
+    <h3>
+      <h2>Question: </h2>{{buzz[next].question}}
+    </h3>
+  </div>
+
+
+  <div class="quizz_options">
+    <button type="button" value="correct" [ngClass]="status ? 'correct' : 'correct'" [disabled]="isdisabled" (click)="clickResponse($event.target)">
+      {{buzz[0].correct_answer}}
+    </button>
+    <button *ngFor="let option of buzz[next].incorrect_answers" value="incorrect" (click)="clickResponse($event.target)"
+      [ngClass]="status ? 'incorrect' : 'correct'" [disabled]="isdisabled">
+      {{option}}
+    </button>
+
+  </div>
+  <button type="button" (click)="Next()" class="btn-primary">next</button>
+</section>

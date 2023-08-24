@@ -1,0 +1,1 @@
+export const Url = 'https://opentdb.com/api.php?amount=10';

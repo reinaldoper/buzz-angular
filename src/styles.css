@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Lobster&family=Roboto:ital,wght@0,100;0,500;1,400&display=swap');*{
+  margin: 0;
+  padding: 0;
+  font-family: Lobster;
+}
+
+body{
+  background: rgb(131,58,180);
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(48,253,29,0.3253676470588235) 54%, rgba(42,121,24,1) 100%);
+}
