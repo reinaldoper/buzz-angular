@@ -15,11 +15,10 @@
 
 
   <div class="quizz_options">
-    <button type="button" value="correct" [ngClass]="status ? 'correct' : 'correct'" [disabled]="isdisabled" (click)="clickResponse($event.target)">
-      {{buzz[next].correct_answer}}
-    </button>
-    <button *ngFor="let option of buzz[next].incorrect_answers" value="incorrect" (click)="clickResponse($event.target)"
-      [ngClass]="status ? 'incorrect' : 'correct'" [disabled]="isdisabled">
+    
+    <button *ngFor="let option of this.embaralharArray(buzz[next].incorrect_answers, buzz[next].correct_answer)"
+      (click)="clickResponse(option)"
+      [ngClass]="status ? (option === buzz[next].correct_answer ? 'correct' : 'incorrect')  : 'correct'" [disabled]="isdisabled">
       {{option}}
     </button>
 

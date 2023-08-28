@@ -14,12 +14,13 @@ export class HomeComponent implements OnInit {
   correct: number = 0;
   isdisabled: boolean = false;
   status: boolean = false;
+  all: Buzz[] = [];
 
   constructor(private api: ApiService, private route: Router) {}
   ngOnInit(){
     this.getBuzz();
   }
-
+ 
   getBuzz():void{
     this.api.getBuzz().subscribe(data => this.buzz = data.results);
   }
@@ -34,14 +35,19 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  clickResponse(target:any){
-    const { value } = target;
+  clickResponse(option:any){
     this.status = true;
-    if(value === 'correct'){
+    if(option === this.buzz[this.next].correct_answer){
       this.correct += 10;
     }
     this.isdisabled = true;
     
   }
+
+  embaralharArray = (array: any, arr: any) => {
+    const result = [...array, arr];
+    const number = 0.5;
+    return result.sort(() => Math.random() - number);
+  };
 
 }
