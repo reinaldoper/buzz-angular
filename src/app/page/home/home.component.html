@@ -15,8 +15,7 @@
 
 
   <div class="quizz_options">
-    
-    <button *ngFor="let option of this.embaralharArray(buzz[next].incorrect_answers, buzz[next].correct_answer)"
+    <button *ngFor="let option of buzz[next].alQuestions"
       (click)="clickResponse(option)"
       [ngClass]="status ? (option === buzz[next].correct_answer ? 'correct' : 'incorrect')  : 'correct'" [disabled]="isdisabled">
       {{option}}

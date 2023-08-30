@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
   correct: number = 0;
   isdisabled: boolean = false;
   status: boolean = false;
-  all: Buzz[] = [];
 
   constructor(private api: ApiService, private route: Router) {}
   ngOnInit(){
@@ -22,7 +21,11 @@ export class HomeComponent implements OnInit {
   }
  
   getBuzz():void{
-    this.api.getBuzz().subscribe(data => this.buzz = data.results);
+    this.api.getBuzz().subscribe(data => {
+      this.buzz = data.results
+      this.buzz.forEach(data => data.alQuestions = this.embaralharArray(data.incorrect_answers, data.correct_answer));
+    });
+    
   }
 
   Next(){

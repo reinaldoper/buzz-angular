@@ -18,4 +18,5 @@ export interface Buzz {
   question: string;
   correct_answer: string;
   incorrect_answers: [string];
+  alQuestions?: [string] | any;
 }
