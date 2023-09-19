@@ -14,10 +14,14 @@ export class HomeComponent implements OnInit {
   correct: number = 0;
   isdisabled: boolean = false;
   status: boolean = false;
+  setTime: number = 0;
+  inter: number = 0;
 
   constructor(private api: ApiService, private route: Router) {}
   ngOnInit(){
     this.getBuzz();
+    this.setTime = 0;
+    this.time();
   }
  
   getBuzz():void{
@@ -32,11 +36,27 @@ export class HomeComponent implements OnInit {
     this.next++;
     this.status = false;
     this.isdisabled = false;
+    
+    this.setTime = 0;
+   
+    
     if(this.next > this.buzz.length -1){
       this.api.setResult(this.correct);
       this.route.navigate(['result']);
     }
+
+    this.time();
   }
+
+  time(){
+    const interval = setInterval(() => {
+      this.setTime += 1
+      if(this.setTime > 30 || this.inter > 0){
+        clearInterval(interval);
+      }
+    }, 1000);
+  }
+  
 
   clickResponse(option:any){
     this.status = true;

@@ -3,9 +3,13 @@
   margin: auto;
   margin-top: 20px;
 }
+strong{
+  color: #0cec2a;
+}
 
 .quizz_questions{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border:1px solid #4224d9;

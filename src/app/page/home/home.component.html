@@ -11,13 +11,15 @@
     <h3>
       <h2>Question: </h2>{{buzz[next].question}}
     </h3>
+    <strong>Timer: {{setTime}}</strong>
   </div>
-
+  
 
   <div class="quizz_options">
+    
     <button *ngFor="let option of buzz[next].alQuestions"
       (click)="clickResponse(option)"
-      [ngClass]="status ? (option === buzz[next].correct_answer ? 'correct' : 'incorrect')  : 'correct'" [disabled]="isdisabled">
+      [ngClass]="status ? (option === buzz[next].correct_answer ? 'correct' : 'incorrect')  : 'correct'" [disabled]="isdisabled || setTime > 30">
       {{option}}
     </button>
 
