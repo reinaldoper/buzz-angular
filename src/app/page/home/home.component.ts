@@ -3,6 +3,7 @@ import { Buzz } from 'src/app/components/TTypeBuzz';
 import { ApiService } from 'src/app/components/api.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,7 +16,7 @@ export class HomeComponent implements OnInit {
   isdisabled: boolean = false;
   status: boolean = false;
   setTime: number = 0;
-  inter: number = 0;
+  interval: number | any = 0;
 
   constructor(private api: ApiService, private route: Router) {}
   ngOnInit(){
@@ -36,9 +37,8 @@ export class HomeComponent implements OnInit {
     this.next++;
     this.status = false;
     this.isdisabled = false;
-    
     this.setTime = 0;
-   
+    clearInterval(this.interval);
     
     if(this.next > this.buzz.length -1){
       this.api.setResult(this.correct);
@@ -49,10 +49,10 @@ export class HomeComponent implements OnInit {
   }
 
   time(){
-    const interval = setInterval(() => {
+    this.interval = setInterval(() => {
       this.setTime += 1
-      if(this.setTime > 30 || this.inter > 0){
-        clearInterval(interval);
+      if(this.setTime > 30){
+        clearInterval(this.interval);
       }
     }, 1000);
   }
